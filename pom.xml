@@ -42,7 +42,14 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+        
+		<!-- web rest xml -->
+        <dependency>
+	        <groupId>com.fasterxml.jackson.dataformat</groupId>
+	        <artifactId>jackson-dataformat-xml</artifactId>
+		</dependency>
+		<!-- web rest xml -->
+        
 		<!-- tomcat jsp -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>

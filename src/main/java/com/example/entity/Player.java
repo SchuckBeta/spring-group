@@ -1,5 +1,8 @@
 package com.example.entity;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Player {
 	private String name;
 	private Integer age;

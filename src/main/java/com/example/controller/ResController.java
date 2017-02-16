@@ -6,15 +6,16 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.entity.Player;
 import com.example.entity.Team;
 
-@Controller
-public class IndexController {
+@RestController
+@RequestMapping("/rest/")
+public class ResController {
+
 	List<Team> teams;
 	
 	@PostConstruct
@@ -27,7 +28,7 @@ public class IndexController {
 			List<Player> players = new ArrayList<Player>();
 			for (int j = 0; j < 5; j++) {
 				Player player = new Player();
-				player.setName("Jason s"+i);
+				player.setName("Jason s"+j);
 				player.setAge(30+j);
 				players.add(player);
 			}
@@ -42,7 +43,6 @@ public class IndexController {
 		return "index";
 	}
 
-	@ResponseBody
 	@RequestMapping("/ajaxJson")
 	public List<String> ajaxJson() {
 		List<String> jsons = new ArrayList<String>();
@@ -50,9 +50,23 @@ public class IndexController {
 		return jsons;
 	}
 	
-	
 	@RequestMapping("/teams")
-	public @ResponseBody List<Team> teams() {
+	public List<Team> teams() {
+		List<Team> teams = new ArrayList<Team>();
+		for (int i = 0; i < 1; i++) {
+			Team team = new Team();
+			team.setName("Jason s"+i);
+			team.setAge(10+i);
+			List<Player> players = new ArrayList<Player>();
+			for (int j = 0; j < 5; j++) {
+				Player player = new Player();
+				player.setName("Jason s"+j);
+				player.setAge(30+j);
+				players.add(player);
+			}
+			team.setPlayers(players);
+			teams.add(team);
+		}
 		return teams;
 	}
 }

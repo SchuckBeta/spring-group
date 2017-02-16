@@ -2,6 +2,9 @@ package com.example.entity;
 
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Team {
 	private String name;
 	private Integer age;
