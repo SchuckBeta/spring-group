@@ -2,12 +2,25 @@ package com.example.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
+@Entity
 public class Team {
+	@Id 
+	@GeneratedValue
+	private Long id;
 	private String name;
 	private Integer age;
+	
+	@JoinColumn(name="teamId")
+	@OneToMany(cascade=CascadeType.ALL)
 	private List<Player> players;
 	public String getName() {
 		return name;

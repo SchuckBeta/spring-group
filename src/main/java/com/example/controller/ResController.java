@@ -52,21 +52,6 @@ public class ResController {
 	
 	@RequestMapping("/teams")
 	public List<Team> teams() {
-		List<Team> teams = new ArrayList<Team>();
-		for (int i = 0; i < 1; i++) {
-			Team team = new Team();
-			team.setName("Jason s"+i);
-			team.setAge(10+i);
-			List<Player> players = new ArrayList<Player>();
-			for (int j = 0; j < 5; j++) {
-				Player player = new Player();
-				player.setName("Jason s"+j);
-				player.setAge(30+j);
-				players.add(player);
-			}
-			team.setPlayers(players);
-			teams.add(team);
-		}
-		return teams;
+		return this.teams;
 	}
 }
