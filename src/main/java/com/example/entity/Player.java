@@ -14,6 +14,20 @@ public class Player {
 	private Long id;
 	private String name;
 	private Integer age;
+	private Long teamId;
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public Long getTeamId() {
+		return teamId;
+	}
+	public void setTeamId(Long teamId) {
+		this.teamId = teamId;
+	}
 	public String getName() {
 		return name;
 	}
