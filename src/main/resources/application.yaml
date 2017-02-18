@@ -1,0 +1,29 @@
+#random value
+#my.secret=${random.value} 
+#my.number=${random.int} 
+#my.bignumber=${random.long} 
+#my.number.less.than.ten=${random.int(10)} 
+#my.number.in.range=${random.int[1024,65536]}
+my:
+  secret:${random.value} 
+  number:${random.int} 
+  bignumber:${random.long} 
+  number.less.than.ten:${random.int(10)} 
+  number.in.range:${random.int[1024,65536]}
+
+#############################################################
+#\u5E38\u91CF
+#test.name=ttzhangsan12
+#test.sname=zhangsan1122
+test:
+  name:ttzhangsan12
+  sname:zhangsan1122
+
+  
+#############################################################
+#my.servers[0]=dev.bar.com
+#my.servers[1]=foo.bar.com
+my:     
+  servers:              
+    - dev.bar.com             
+    - foo.bar.com
