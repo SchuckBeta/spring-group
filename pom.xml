@@ -61,6 +61,26 @@
 		</dependency>
 		<!-- tomcat jsp end -->
 		<!-- spring boot web end -->
+		
+		
+		<!-- activemq -->
+		<!-- 会在程序中直接内嵌 ActivityMQ，也就是说不需要安装 ActiveMQ，但是这个如果服务宕机了，内嵌的 ActiveMQ 也就没了。关键，这个内嵌的 ActiveMQ 而无法看到图形化界面，所以这里没有直接使用注释里的依赖。 -->
+		<!--  
+        <dependency>  
+            <groupId>org.springframework.boot</groupId>  
+            <artifactId>spring-boot-starter-activemq</artifactId>  
+        </dependency>  
+        -->  
+        <dependency>  
+            <groupId>org.springframework</groupId>  
+            <artifactId>spring-jms</artifactId>  
+        </dependency>  
+        <dependency>  
+            <groupId>org.apache.activemq</groupId>  
+            <artifactId>activemq-client</artifactId>  
+        </dependency>  
+        <!-- activemq end -->
+		
 	</dependencies>
 
 	<build>
