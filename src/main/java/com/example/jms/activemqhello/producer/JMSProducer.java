@@ -26,9 +26,9 @@ public class JMSProducer {
     //发送的消息数量
     private static final int SENDNUM = 10;
 
-//    public static void main(String[] args) {
-//        run();
-//    }
+    public static void main(String[] args) {
+        run();
+    }
     
 	private static void run() {
 		//连接工厂

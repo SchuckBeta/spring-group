@@ -23,5 +23,4 @@ public class QueueReceiver2 implements MessageListener {
 			e.printStackTrace();
 		}
 	}
-
 }

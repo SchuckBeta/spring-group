@@ -1,7 +1,5 @@
 package com.example.controller;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -10,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.jms.activemq.producer.queue.QueueSender;
 import com.example.jms.activemq.producer.topic.TopicSender;
+import com.example.jms.activemq.queue.QSval;
 import com.example.jms.activemq.queue.Qqueue;
 import com.example.jms.activemq.queue.Qtopic;
 
@@ -34,7 +33,8 @@ public class ActivemqController {
 	public String queueSender(@RequestParam("message")String message){
 		String opt="";
 		try {
-			queueSender.send(new Qqueue(), message);
+			queueSender.send(QSval.QUEUE_TEST, message);
+//			queueSender.send(new Qqueue(), message);
 			opt = "suc";
 		} catch (Exception e) {
 			opt = e.getCause().toString();
@@ -54,7 +54,8 @@ public class ActivemqController {
 	public String topicSender(@RequestParam("message")String message){
 		String opt = "";
 		try {
-			topicSender.send(new Qtopic(), message);
+			topicSender.send(QSval.TOPIC_TEST, message);
+//			topicSender.send(new Qtopic(), message);
 			opt = "suc";
 		} catch (Exception e) {
 			opt = e.getCause().toString();

@@ -21,9 +21,9 @@ public class JMSConsumer {
     private static final String PASSWORD = ActiveMQConnection.DEFAULT_PASSWORD;//默认连接密码
     private static final String BROKEURL = ActiveMQConnection.DEFAULT_BROKER_URL;//默认连接地址
 
-//    public static void main(String[] args) {
-//        run();
-//    }
+    public static void main(String[] args) {
+        run();
+    }
 
 	private static void run() {
 		ConnectionFactory connectionFactory;//连接工厂

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @description  Topic消息监听器
  * 
  */
-@Component
+@Component("topicReceiver1")
 public class TopicReceiver1 implements MessageListener{
 
 

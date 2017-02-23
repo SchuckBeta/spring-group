@@ -2,8 +2,6 @@ package com.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.jms.annotation.EnableJms;
 
 /**
@@ -12,7 +10,6 @@ import org.springframework.jms.annotation.EnableJms;
  * 	@ComponentScan
  * 	@EnableAutoConfiguration
  */
-//@ComponentScan//组件扫描  
 @EnableJms
 @SpringBootApplication
 public class Application {
