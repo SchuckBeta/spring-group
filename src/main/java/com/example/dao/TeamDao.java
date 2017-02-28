@@ -10,4 +10,6 @@ public interface TeamDao extends CrudRepository<Team, Long>{
 	List<Team> findAll();
 
 	Team findByName(String name);
+	
+	List<Team> findByNameStartsWithIgnoreCase(String name);
 }

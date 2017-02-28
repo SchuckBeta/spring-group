@@ -22,6 +22,16 @@ public class Team {
 	@JoinColumn(name="teamId")
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<Player> players;
+	
+	public Team() {
+		super();
+	}
+	
+	public Team(String name, Integer age) {
+		super();
+		this.name = name;
+		this.age = age;
+	}
 	public String getName() {
 		return name;
 	}
@@ -39,5 +49,13 @@ public class Team {
 	}
 	public void setPlayers(List<Player> players) {
 		this.players = players;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 }
