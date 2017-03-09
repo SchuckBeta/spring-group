@@ -37,7 +37,7 @@ public class IndexController {
 	}
 
 	
-	@RequestMapping("/")
+	@RequestMapping(value={"/", ""})
 	public String index(Map<String, Object> model) {
 		return "index";
 	}

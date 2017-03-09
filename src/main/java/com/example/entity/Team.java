@@ -6,9 +6,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Team {
+	private Long id;
 	private String name;
 	private Integer age;
 	private List<Player> players;
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
