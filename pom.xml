@@ -19,7 +19,7 @@
 	</parent>
 
 	<properties>
-		<checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
+		<checkstyle.config.location>checkstyle_google.xml</checkstyle.config.location>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
@@ -70,7 +70,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			
+
 			<!-- <plugin>
                    <groupId>org.codehaus.mojo</groupId>
                    <artifactId>findbugs-maven-plugin</artifactId>
@@ -81,7 +81,7 @@
                    <artifactId>maven-jxr-plugin</artifactId>
                    <version>2.3</version>
            </plugin> -->
-           
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -94,7 +94,7 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <configLocation>checkstyle.xml</configLocation>
+                    <configLocation>checkstyle_google.xml</configLocation>
                     <encoding>UTF-8</encoding>
                     <consoleOutput>true</consoleOutput>
                     <failsOnError>true</failsOnError>
@@ -106,34 +106,49 @@
                 <!--<configLocation>mycheker.xml</configLocation>-->
                 <!--</configuration>-->
             </plugin>
+
+	        <plugin>
+	           <groupId>org.codehaus.mojo</groupId>
+	           <artifactId>findbugs-maven-plugin</artifactId>
+	           <version>2.5.1</version>
+	           <configuration>
+	               <!-- <configLocation>${basedir}/springside-findbugs.xml</configLocation> -->
+	               <threshold>High</threshold>
+	               <effort>Default</effort>
+	               <findbugsXmlOutput>true</findbugsXmlOutput>
+	               <!-- findbugs xml输出路径-->
+	               <findbugsXmlOutputDirectory>target/site</findbugsXmlOutputDirectory>
+	           </configuration>
+	        </plugin>
 		</plugins>
+
 	</build>
-	
-	<!-- <reporting>  
-        <plugins>  --> 
-        	<!-- <plugin>  
-                <groupId>org.apache.maven.plugins</groupId>  
-                <artifactId>maven-surefire-plugin</artifactId>  
-                <version>2.18.1</version>  
+
+	<!-- <reporting>
+        <plugins>  -->
+        	<!-- <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
             </plugin> -->
-        
-			<!-- * config/sun_checks.xml - Sun Microsystems Definition (default).  
-			* config/maven_checks.xml - Maven Development Definitions.  
-			* config/turbine_checks.xml - Turbine Development Definitions.  
+
+			<!-- * config/sun_checks.xml - Sun Microsystems Definition (default).
+			* config/maven_checks.xml - Maven Development Definitions.
+			* config/turbine_checks.xml - Turbine Development Definitions.
 			* config/avalon_checks.xml - Avalon Development Definitions. -->
-            <!-- <plugin>  
-                <groupId>org.apache.maven.plugins</groupId>  
-                <artifactId>maven-checkstyle-plugin</artifactId>  
-                <version>2.9.1</version>  
-            </plugin>  
-  
-            <plugin>  
-                <groupId>org.apache.maven.plugins</groupId>  
-                <artifactId>maven-jxr-plugin</artifactId>  
-                <version>2.3</version>  
+            <!-- <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>2.9.1</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>2.3</version>
             </plugin>   -->
-    
-    
+
+
            <!-- <plugin>
                    <groupId>org.apache.maven.plugins</groupId>
                    <artifactId>maven-checkstyle-plugin</artifactId>
