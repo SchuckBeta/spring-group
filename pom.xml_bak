@@ -19,7 +19,7 @@
 	</parent>
 
 	<properties>
-		<checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
+		<!-- <checkstyle.config.location>checkstyle.xml</checkstyle.config.location> -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
@@ -70,52 +70,33 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			
 			<!-- <plugin>
-                   <groupId>org.codehaus.mojo</groupId>
-                   <artifactId>findbugs-maven-plugin</artifactId>
-                   <version>2.5.2</version>
-           </plugin>
-           <plugin>
-                   <groupId>org.apache.maven.plugins</groupId>
-                   <artifactId>maven-jxr-plugin</artifactId>
-                   <version>2.3</version>
-           </plugin> -->
-           
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>2.17</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.puppycrawl.tools</groupId>
-                        <artifactId>checkstyle</artifactId>
-                        <version>6.19</version>
-                    </dependency>
-                </dependencies>
-                <configuration>
-                    <configLocation>checkstyle.xml</configLocation>
-                    <encoding>UTF-8</encoding>
-                    <consoleOutput>true</consoleOutput>
-                    <failsOnError>true</failsOnError>
-                    <failsOnWarning>true</failsOnWarning>
-                    <linkXRef>true</linkXRef>
-                </configuration>
-
-                <!--<configuration>-->
-                <!--<configLocation>mycheker.xml</configLocation>-->
-                <!--</configuration>-->
-            </plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-checkstyle-plugin</artifactId>
+		        <version>2.9.1</version>
+		    </plugin> -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>2.5.2</version>
+				<configuration>
+					<!-- <excludeFilterFile>findbugs-exclude.xml</excludeFilterFile>  
+					<includeFilterFile>findbugs-include.xml</includeFilterFile> -->  
+					<!-- <configLocation>${basedir}/springside-findbugs.xml</configLocation> -->
+					<threshold>High</threshold>
+					<effort>Default</effort>
+					<findbugsXmlOutput>true</findbugsXmlOutput>
+					<!-- <xmlOutput>true</xmlOutput>  
+                    <effort>Max</effort> -->
+					<!-- findbugs xml输出路径 -->
+					<findbugsXmlOutputDirectory>target/site</findbugsXmlOutputDirectory>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	
-	<!-- <reporting>  
-        <plugins>  --> 
-        	<!-- <plugin>  
-                <groupId>org.apache.maven.plugins</groupId>  
-                <artifactId>maven-surefire-plugin</artifactId>  
-                <version>2.18.1</version>  
-            </plugin> -->
+	<reporting>  
+        <plugins>  
         
 			<!-- * config/sun_checks.xml - Sun Microsystems Definition (default).  
 			* config/maven_checks.xml - Maven Development Definitions.  
@@ -134,10 +115,10 @@
             </plugin>   -->
     
     
-           <!-- <plugin>
+           <plugin>
                    <groupId>org.apache.maven.plugins</groupId>
                    <artifactId>maven-checkstyle-plugin</artifactId>
-                   <version>2.9.1</version>
+                   <version>2.13</version>
                    <reportSets>
                            <reportSet>
                                    <reports>
@@ -145,17 +126,17 @@
                                    </reports>
                            </reportSet>
                    </reportSets>
-           </plugin> -->
-           <!-- <plugin>
+           </plugin>
+           <plugin>
                    <groupId>org.codehaus.mojo</groupId>
                    <artifactId>findbugs-maven-plugin</artifactId>
-                   <version>2.5.2</version>
+                   <version>3.0.0</version>
            </plugin>
            <plugin>
                    <groupId>org.apache.maven.plugins</groupId>
                    <artifactId>maven-jxr-plugin</artifactId>
                    <version>2.3</version>
-           </plugin> -->
-     <!--   </plugins>
-    </reporting> -->
+           </plugin>
+       </plugins>
+    </reporting>
 </project>
