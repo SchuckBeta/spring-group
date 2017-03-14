@@ -20,9 +20,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/xml/")
 public class XmlController {
   /**
-   * 长度30.
+   * 年龄30.
    */
   private static final int AGE_30 = 30;
+
   /**
    * 长度5.
    */
@@ -68,9 +69,9 @@ public class XmlController {
   }
 
   /**
-   * 异步获取json.
+   * 获取json字符串.
    *
-   * @return 返回JSon字符串
+   * @return 返回字符串列表
    */
   @RequestMapping("/ajaxJson")
   public List<String> ajaxJson() {

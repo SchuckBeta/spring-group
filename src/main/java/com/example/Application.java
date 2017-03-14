@@ -8,21 +8,21 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * EnableAutoConfiguration .
  */
 @SpringBootApplication
-public final class Application {
-	/**
-	 * 隐藏构造器.
-	 */
-	private Application() {
-		super();
-	}
+public class Application {
+  /**
+   * 隐藏构造器.
+   */
+  public Application() {
+    super();
+  }
 
-	/**
-	 * 启动方法.
-	 *
-	 * @param args
-	 *            参数
-	 */
-	public static void main(final String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
+  /**
+   * 启动方法.
+   *
+   * @param args
+   *            参数
+   */
+  public static void main(final String[] args) {
+    SpringApplication.run(Application.class, args);
+  }
 }

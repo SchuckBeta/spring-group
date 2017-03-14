@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.entity.Team;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -12,22 +13,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.entity.Team;
 
 @RestController
-@RequestMapping(value="/iteams")     // 通过这里配置使下面的映射都在/teams下，可去除
+@RequestMapping(value = "/iteams")     // 通过这里配置使下面的映射都在/teams下，可去除
 public class TeamController {
 
     static Map<Long, Team> teams = Collections.synchronizedMap(new HashMap<Long, Team>());
 
-    @RequestMapping(value={"/hello"}, method=RequestMethod.GET)
+
+    @RequestMapping(value = {"/hello"}, method = RequestMethod.GET)
     public String hello() {
         // 处理"/teams/"的GET请求，用来获取用户列表
         // 还可以通过@RequestParam从页面中传递参数来进行查询条件或者翻页信息的传递
 //        List<Team> r = new ArrayList<Team>(teams.values());
         return "hello world";
     }
-    
+
     @RequestMapping(value={"/", ""}, method=RequestMethod.GET)
     public List<Team> getTeamList() {
         // 处理"/teams/"的GET请求，用来获取用户列表
