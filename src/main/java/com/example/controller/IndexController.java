@@ -19,6 +19,10 @@ public class IndexController {
 
   @PostConstruct
   public void init() {
+//    String[] s = new String[]{};
+//    BigDecimal s2 = new BigDecimal(.1);
+//    System.out.println(s2);
+//    System.out.println(s[2]);
     this.teams = new ArrayList<Team>();
     for (int i = 0; i < 1; i++) {
       Team team = new Team();

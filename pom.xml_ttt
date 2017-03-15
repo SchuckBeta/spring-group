@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.example</groupId>
+	<artifactId>demo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>spring-boot</name>
+	<description>Demo project for Spring Boot</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.1.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<checkstyle.config.location>checkstyle_google.xml</checkstyle.config.location>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+		<!-- spring boot web -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- web rest xml -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+		</dependency>
+		<!-- web rest xml -->
+
+		<!-- tomcat jsp -->
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<!-- tomcat jsp end -->
+		<!-- spring boot web end -->
+	</dependencies>
+
+	<reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>2.9.1</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>2.3</version>
+            </plugin>
+        </plugins>
+    </reporting>
+
+	<!-- <build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>2.17</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>6.19</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <configLocation>checkstyle_google.xml</configLocation>
+                    <encoding>UTF-8</encoding>
+                    <consoleOutput>true</consoleOutput>
+                    <failsOnError>true</failsOnError>
+                    <failsOnWarning>true</failsOnWarning>
+                    <linkXRef>true</linkXRef>
+                </configuration>
+            </plugin>
+		</plugins>
+	</build> -->
+
+	<!-- <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.0</version>
+            </plugin>
+            <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-jxr-plugin</artifactId>
+	            <version>2.3</version>
+	        </plugin>
+	        <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-javadoc-plugin</artifactId>
+	            <version>2.9.1</version>
+	        </plugin>
+        </plugins>
+    </reporting> -->
+
+
+	<!-- <build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+                   <groupId>org.codehaus.mojo</groupId>
+                   <artifactId>findbugs-maven-plugin</artifactId>
+                   <version>2.5.2</version>
+           </plugin>
+           <plugin>
+                   <groupId>org.apache.maven.plugins</groupId>
+                   <artifactId>maven-jxr-plugin</artifactId>
+                   <version>2.3</version>
+           </plugin>
+
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>2.17</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>6.19</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <configLocation>checkstyle_google.xml</configLocation>
+                    <encoding>UTF-8</encoding>
+                    <consoleOutput>true</consoleOutput>
+                    <failsOnError>true</failsOnError>
+                    <failsOnWarning>true</failsOnWarning>
+                    <linkXRef>true</linkXRef>
+                </configuration>
+
+                <configuration>
+                <configLocation>checkstyle_google.xml</configLocation>
+                </configuration>
+            </plugin>
+
+	        <plugin>
+	           <groupId>org.codehaus.mojo</groupId>
+	           <artifactId>findbugs-maven-plugin</artifactId>
+	           <version>2.5.1</version>
+	           <configuration>
+	               <configLocation>${basedir}/springside-findbugs.xml</configLocation>
+	               <threshold>High</threshold>
+	               <effort>Default</effort>
+	               <findbugsXmlOutput>true</findbugsXmlOutput>
+	               findbugs xml输出路径
+	               <findbugsXmlOutputDirectory>target/site</findbugsXmlOutputDirectory>
+	           </configuration>
+	        </plugin>
+
+		    <plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-pmd-plugin</artifactId>
+		        <configuration>
+		            <linkXref>true</linkXref>
+		            <sourceEncoding>ISO-8859-1</sourceEncoding>
+		            <minimumTokens>30</minimumTokens>
+		            <targetJdk>1.4</targetJdk>
+		        </configuration>
+		    </plugin>
+		</plugins>
+	</build> -->
+
+<!--     <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.0</version>
+            </plugin>
+            <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-jxr-plugin</artifactId>
+	            <version>2.3</version>
+	        </plugin>
+	        <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-javadoc-plugin</artifactId>
+	            <version>2.9.1</version>
+	        </plugin>
+        </plugins>
+    </reporting> -->
+
+	<!-- <reporting>
+        <plugins>  -->
+        	<!-- <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
+            </plugin> -->
+
+			<!-- * config/sun_checks.xml - Sun Microsystems Definition (default).
+			* config/maven_checks.xml - Maven Development Definitions.
+			* config/turbine_checks.xml - Turbine Development Definitions.
+			* config/avalon_checks.xml - Avalon Development Definitions. -->
+            <!-- <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>2.9.1</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>2.3</version>
+            </plugin>   -->
+
+
+           <!-- <plugin>
+                   <groupId>org.apache.maven.plugins</groupId>
+                   <artifactId>maven-checkstyle-plugin</artifactId>
+                   <version>2.9.1</version>
+                   <reportSets>
+                           <reportSet>
+                                   <reports>
+                                           <report>checkstyle</report>
+                                   </reports>
+                           </reportSet>
+                   </reportSets>
+           </plugin> -->
+           <!-- <plugin>
+                   <groupId>org.codehaus.mojo</groupId>
+                   <artifactId>findbugs-maven-plugin</artifactId>
+                   <version>2.5.2</version>
+           </plugin>
+           <plugin>
+                   <groupId>org.apache.maven.plugins</groupId>
+                   <artifactId>maven-jxr-plugin</artifactId>
+                   <version>2.3</version>
+           </plugin> -->
+     <!--   </plugins>
+    </reporting> -->
+</project>

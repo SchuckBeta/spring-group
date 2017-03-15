@@ -19,7 +19,8 @@
 	</parent>
 
 	<properties>
-		<checkstyle.config.location>checkstyle_google.xml</checkstyle.config.location>
+		<!-- <checkstyle.config.location>checkstyle_google.xml</checkstyle.config.location> -->
+		<!-- <checkstyle.config.location>${basedir}/src/main/resources/config/checkstyle_google.xml</checkstyle.config.location> -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
@@ -62,115 +63,136 @@
 		</dependency>
 		<!-- tomcat jsp end -->
 		<!-- spring boot web end -->
+
+		<dependency>
+		 	<groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-pmd-plugin</artifactId>
+	        <version>3.6</version>
+		</dependency>
 	</dependencies>
 
 	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- checkstyle start-->
+				<plugin>
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-checkstyle-plugin</artifactId>
+	                <version>2.17</version>
+	                <dependencies>
+	                    <dependency>
+	                        <groupId>com.puppycrawl.tools</groupId>
+	                        <artifactId>checkstyle</artifactId>
+	                        <version>6.19</version>
+	                    </dependency>
+	                </dependencies>
+	                <configuration>
+		                <configLocation>${basedir}/src/config/checkstyle_google.xml</configLocation>
+		                <encoding>UTF-8</encoding>
+	                    <consoleOutput>true</consoleOutput>
+	                    <failsOnError>true</failsOnError>
+	                    <failsOnWarning>true</failsOnWarning>
+	                    <linkXRef>true</linkXRef>
+		            </configuration>
+	            </plugin>
+	            <plugin>
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-jxr-plugin</artifactId>
+	                <version>2.3</version>
+	            </plugin>
+	      		<!-- checkstyle end-->
+
+
+				<!-- findbugs start-->
+	            <plugin>
+			        <groupId>org.codehaus.mojo</groupId>
+			        <artifactId>findbugs-maven-plugin</artifactId>
+			        <version>3.0.3</version>
+			        <!-- <configuration>
+			            <onlyAnalyze>com.company.util.*,com.company.myapp.*</onlyAnalyze>
+  						<includeFilterFile>${basedir}/src/config/findbugs_include.xml</includeFilterFile>
+		                <excludeFilterFile>${basedir}/src/config/findbugs_exclude.xml</excludeFilterFile>
+	                    <xmlOutput>true</xmlOutput>
+	                    <effort>Max</effort>
+			        </configuration> -->
+			    </plugin>
+			    <!-- findbugs end-->
+
+
+				<!-- pmd start-->
+			    <plugin>
+			        <groupId>org.apache.maven.plugins</groupId>
+			        <artifactId>maven-pmd-plugin</artifactId>
+			        <version>3.6</version>
+			        <configuration>
+			            <rulesets>
+			                <ruleset>${basedir}/src/config/pmd_rules.xml</ruleset>
+			            </rulesets>
+			        </configuration>
+			    </plugin>
+			    <!-- pmd end-->
+            </plugins>
+		</pluginManagement>
 		<plugins>
+			 <!-- checkstyle start-->
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-
-			<!-- <plugin>
-                   <groupId>org.codehaus.mojo</groupId>
-                   <artifactId>findbugs-maven-plugin</artifactId>
-                   <version>2.5.2</version>
-           </plugin>
-           <plugin>
-                   <groupId>org.apache.maven.plugins</groupId>
-                   <artifactId>maven-jxr-plugin</artifactId>
-                   <version>2.3</version>
-           </plugin> -->
-
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>2.17</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.puppycrawl.tools</groupId>
-                        <artifactId>checkstyle</artifactId>
-                        <version>6.19</version>
-                    </dependency>
-                </dependencies>
-                <configuration>
-                    <configLocation>checkstyle_google.xml</configLocation>
-                    <encoding>UTF-8</encoding>
-                    <consoleOutput>true</consoleOutput>
-                    <failsOnError>true</failsOnError>
-                    <failsOnWarning>true</failsOnWarning>
-                    <linkXRef>true</linkXRef>
-                </configuration>
-
-                <!--<configuration>-->
-                <!--<configLocation>mycheker.xml</configLocation>-->
-                <!--</configuration>-->
             </plugin>
+            <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-jxr-plugin</artifactId>
+        	</plugin>
+        	<!-- checkstyle end-->
 
-	        <plugin>
-	           <groupId>org.codehaus.mojo</groupId>
-	           <artifactId>findbugs-maven-plugin</artifactId>
-	           <version>2.5.1</version>
-	           <configuration>
-	               <!-- <configLocation>${basedir}/springside-findbugs.xml</configLocation> -->
-	               <threshold>High</threshold>
-	               <effort>Default</effort>
-	               <findbugsXmlOutput>true</findbugsXmlOutput>
-	               <!-- findbugs xml输出路径-->
-	               <findbugsXmlOutputDirectory>target/site</findbugsXmlOutputDirectory>
-	           </configuration>
+
+			<!-- findbugs start-->
+        	<plugin>
+		        <groupId>org.codehaus.mojo</groupId>
+		        <artifactId>findbugs-maven-plugin</artifactId>
 	        </plugin>
-		</plugins>
+	        <!-- findbugs end-->
 
+
+			<!-- pmd start-->
+	        <plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-pmd-plugin</artifactId>
+	        </plugin>
+	        <!-- pmd end-->
+		</plugins>
 	</build>
 
-	<!-- <reporting>
-        <plugins>  -->
-        	<!-- <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.18.1</version>
-            </plugin> -->
-
-			<!-- * config/sun_checks.xml - Sun Microsystems Definition (default).
-			* config/maven_checks.xml - Maven Development Definitions.
-			* config/turbine_checks.xml - Turbine Development Definitions.
-			* config/avalon_checks.xml - Avalon Development Definitions. -->
-            <!-- <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>2.9.1</version>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jxr-plugin</artifactId>
-                <version>2.3</version>
-            </plugin>   -->
-
-
-           <!-- <plugin>
-                   <groupId>org.apache.maven.plugins</groupId>
-                   <artifactId>maven-checkstyle-plugin</artifactId>
-                   <version>2.9.1</version>
-                   <reportSets>
-                           <reportSet>
-                                   <reports>
-                                           <report>checkstyle</report>
-                                   </reports>
-                           </reportSet>
-                   </reportSets>
-           </plugin> -->
-           <!-- <plugin>
-                   <groupId>org.codehaus.mojo</groupId>
-                   <artifactId>findbugs-maven-plugin</artifactId>
-                   <version>2.5.2</version>
-           </plugin>
-           <plugin>
-                   <groupId>org.apache.maven.plugins</groupId>
-                   <artifactId>maven-jxr-plugin</artifactId>
-                   <version>2.3</version>
-           </plugin> -->
-     <!--   </plugins>
-    </reporting> -->
+	<reporting>
+		<excludeDefaults></excludeDefaults>
+		<outputDirectory>${basedir}/target/site</outputDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>2.17</version>
+				<configuration>
+				<configLocation>checkstyle.xml</configLocation>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.0.1</version>
+				<reportSets>
+					<reportSet>
+						<id>sunlink</id>
+						<reports>
+							<report>javadoc</report>
+						</reports>
+						<inherited>true</inherited>
+						<configuration>
+							<links>
+								<link>http://java.sun.com/j2se/1.5.0/docs/api/</link>
+							</links>
+						</configuration>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
 </project>

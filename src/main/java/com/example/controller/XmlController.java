@@ -32,16 +32,16 @@ public class XmlController {
    * 年龄10.
    */
   private static final int AGE_10 = 10;
-  /**
-   * 团队.
-   */
-  private Team team;
 
   /**
    * 初始化方法.
    */
   @PostConstruct
   public void init() {
+    initData();
+  }
+
+  private void initData() {
     Team team1 = new Team();
     team1.setName("Jason s");
     team1.setAge(AGE_10);
@@ -98,6 +98,6 @@ public class XmlController {
       players.add(player);
     }
     team1.setPlayers(players);
-    return team;
+    return team1;
   }
 }
