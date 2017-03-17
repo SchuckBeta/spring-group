@@ -19,12 +19,35 @@
 	</parent>
 
 	<properties>
-		<!-- <checkstyle.config.location>checkstyle_google.xml</checkstyle.config.location> -->
-		<!-- <checkstyle.config.location>${basedir}/src/main/resources/config/checkstyle_google.xml</checkstyle.config.location> -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 	</properties>
+
+	<dependencyManagement>
+        <dependencies>
+			<!-- selenium start -->
+			<dependency>
+				<groupId>org.testng</groupId>
+				<artifactId>testng</artifactId>
+				<version>6.8</version>
+				<scope>test</scope>
+			</dependency>
+	        <dependency>
+	            <groupId>org.seleniumhq.selenium</groupId>
+	            <artifactId>selenium-java</artifactId>
+	            <version>2.53.1</version>
+				<scope>test</scope>
+	        </dependency>
+	       	<dependency>
+			    <groupId>com.opera</groupId>
+			    <artifactId>operadriver</artifactId>
+			    <version>1.5</version>
+				<scope>test</scope>
+			</dependency>
+			<!-- selenium end -->
+		</dependencies>
+	</dependencyManagement>
 
 	<dependencies>
 		<!-- spring boot web -->
@@ -64,6 +87,21 @@
 		<!-- tomcat jsp end -->
 		<!-- spring boot web end -->
 
+
+		<!-- selenium start -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+		</dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+        </dependency>
+       	<dependency>
+		    <groupId>com.opera</groupId>
+		    <artifactId>operadriver</artifactId>
+		</dependency>
+		<!-- selenium end -->
 	</dependencies>
 
 	<build>
