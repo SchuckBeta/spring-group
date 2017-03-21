@@ -27,12 +27,6 @@
 	<dependencyManagement>
         <dependencies>
 			<!-- selenium start -->
-			<dependency>
-				<groupId>org.testng</groupId>
-				<artifactId>testng</artifactId>
-				<version>6.8</version>
-				<scope>test</scope>
-			</dependency>
 	        <dependency>
 	            <groupId>org.seleniumhq.selenium</groupId>
 	            <artifactId>selenium-java</artifactId>
@@ -46,7 +40,26 @@
 				<scope>test</scope>
 			</dependency>
 			<!-- selenium end -->
-		</dependencies>
+
+			<!-- testng end -->
+			<dependency>
+				<groupId>org.testng</groupId>
+				<artifactId>testng</artifactId>
+				<version>6.8.7</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>net.sf.opencsv</groupId>
+				<artifactId>opencsv</artifactId>
+				<version>2.3</version>
+			</dependency>
+			<!-- testng end -->
+			<dependency>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-util</artifactId>
+				<version>9.4.1.v20170120</version>
+			</dependency>
+        </dependencies>
 	</dependencyManagement>
 
 	<dependencies>
@@ -89,10 +102,6 @@
 
 
 		<!-- selenium start -->
-		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-		</dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
@@ -102,11 +111,86 @@
 		    <artifactId>operadriver</artifactId>
 		</dependency>
 		<!-- selenium end -->
+
+		<!-- testng start -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>net.sf.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+		</dependency>
+		<!-- testng end -->
+
+		<!-- findbugs start -->
+		<dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+		<!-- findbugs end -->
 	</dependencies>
 
 	<build>
 		<pluginManagement>
 			<plugins>
+				<!-- maven-compiler start-->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.1</version>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+					</configuration>
+				</plugin>
+				<!-- maven-compiler end-->
+
+
+				<!-- maven-surefire (testng) start-->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.16</version>
+					<configuration>
+						<properties>
+				            <property>
+				            	<name>junit</name>
+				            	<value>false</value>
+				            </property>
+			          	</properties>
+			          	<threadCount>1</threadCount>
+			        	<systemPropertyVariables>
+			            	<propertyName>firefox</propertyName>
+			        	</systemPropertyVariables>
+						<!-- <groups></groups> -->
+						<trimStackTrace>true</trimStackTrace>
+						<suitename>AllTests</suitename>
+			        	<suiteXmlFiles>
+							<suiteXmlFile>src/test/resources/testngAno.xml</suiteXmlFile>
+							<suiteXmlFile>src/test/resources/testngDepends.xml</suiteXmlFile>
+							<suiteXmlFile>src/test/resources/testngGroup.xml</suiteXmlFile>
+							<suiteXmlFile>src/test/resources/testngJunit.xml</suiteXmlFile>
+							<suiteXmlFile>src/test/resources/testngParams.xml</suiteXmlFile>
+				        </suiteXmlFiles>
+					</configuration>
+					<dependencies>
+			        	<dependency>
+				            <groupId>org.apache.maven.surefire</groupId>
+				            <artifactId>surefire-junit47</artifactId>
+				            <version>2.19.1</version>
+				       	</dependency>
+				        <dependency>
+				            <groupId>org.apache.maven.surefire</groupId>
+				            <artifactId>surefire-testng</artifactId>
+				            <version>2.19.1</version>
+				        </dependency>
+			        </dependencies>
+				</plugin>
+				<!-- maven-surefire (testng) end-->
+
+
 				<!-- checkstyle start-->
 				<plugin>
 	                <groupId>org.apache.maven.plugins</groupId>
@@ -148,6 +232,14 @@
 	                    <xmlOutput>true</xmlOutput>
 	                    <effort>Max</effort>
 			        </configuration> -->
+			        <!-- <executions>
+	                    <execution>
+	                        <phase>test</phase>
+	                        <goals>
+	                            <goal>check</goal>
+	                        </goals>
+	                    </execution>
+	                </executions> -->
 			    </plugin>
 			    <!-- findbugs end-->
 
@@ -166,8 +258,25 @@
 			    <!-- pmd end-->
             </plugins>
 		</pluginManagement>
+
 		<plugins>
-			 <!-- checkstyle start-->
+			<!-- maven-compiler start-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+			<!-- maven-compiler end-->
+
+
+			<!-- maven-surefire end-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+			</plugin>
+			<!-- maven-surefire end-->
+
+
+			<!-- checkstyle start-->
 			<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
